@@ -66,4 +66,3 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 ## Aide
 
 Pour toute question ou problème, consultez la documentation Flask ou demandez de l'aide dans les forums appropriés.
-"""
