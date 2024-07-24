@@ -39,8 +39,8 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
    - `DATABASE`: Nom de la base de données
 
 4. **Initialiser la base de données**
-   
-  Assurez-vous que votre base de données MySQL est en cours d'exécution. Utilisez le script `init_db.sql` pour créer les tables nécessaires dans la base de données en exécutant la commande suivante dans votre terminal :
+
+   Assurez-vous que votre base de données MySQL est en cours d'exécution. Utilisez le script `init_db.sql` pour créer les tables nécessaires dans la base de données en exécutant la commande suivante dans votre terminal :
     ```bash
     mysql -u <USERNAME> -p < init_db.sql
     ```
