@@ -59,13 +59,22 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
     ```bash
     mysql -u <USERNAME> -p < init_db.sql
     ```
-    
-7. **Lancer l'application**
+
+7. **Population de la base de données pour les tests**
+
+   Utilisez le script `populate_db.sql` pour remplir la base de données avec des données de test en exécutant la commande suivante :
+    ```bash
+    mysql -u <USERNAME> -p <DATABASE_NAME> < populate_db.sql
+    ```
+   
+   Remplacez `<USERNAME>` par votre nom d'utilisateur MySQL et `<DATABASE_NAME>` par le nom de votre base de données (par exemple `portefeuille_db`).
+
+8. **Lancer l'application**
     ```bash
     python3 app.py
     ```
 
-8. **Accéder à l'application**
+9. **Accéder à l'application**
 
    Ouvrez votre navigateur et allez à l'adresse suivante :
    - [Accueil](http://127.0.0.1:5000/)
