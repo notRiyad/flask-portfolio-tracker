@@ -19,12 +19,27 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
     cd flask-portfolio-tracker
     ```
 
-2. **Installer les dépendances**
+2. **Créer un environnement virtuel**
+    ```bash
+    python3 -m venv venv
+    ```
+
+3. **Activer l'environnement virtuel**
+    - Sur Windows :
+      ```bash
+      venv\Scripts\activate
+      ```
+    - Sur macOS/Linux :
+      ```bash
+      source venv/bin/activate
+      ```
+
+4. **Installer les dépendances**
     ```bash
     pip install -r requirements.txt
     ```
 
-3. **Configurer la base de données**
+5. **Configurer la base de données**
 
    Modifiez la ligne suivante dans `app.py` pour inclure vos informations de connexion à la base de données :
    
@@ -38,19 +53,19 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
    - `HOST`: Adresse de l'hôte de la base de données (typiquement `localhost`)
    - `DATABASE`: Nom de la base de données
 
-4. **Initialiser la base de données**
+6. **Initialiser la base de données**
 
    Assurez-vous que votre base de données MySQL est en cours d'exécution. Utilisez le script `init_db.sql` pour créer les tables nécessaires dans la base de données en exécutant la commande suivante dans votre terminal :
     ```bash
     mysql -u <USERNAME> -p < init_db.sql
     ```
     
-5. **Lancer l'application**
+7. **Lancer l'application**
     ```bash
     python3 app.py
     ```
 
-6. **Accéder à l'application**
+8. **Accéder à l'application**
 
    Ouvrez votre navigateur et allez à l'adresse suivante :
    - [Accueil](http://127.0.0.1:5000/)
