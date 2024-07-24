@@ -44,11 +44,11 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
   Assurez-vous que votre base de données MySQL est en cours d'exécution. Utilisez le script init_db.sql pour créer les tables nécessaires dans la base de données en exécutant la commande suivante dans votre terminal :
     ```bash
     mysql -u <USERNAME> -p < init_db.sql
-    ```
-
+```
+    
 5. **Lancer l'application**
     ```bash
-    python app.py
+    python3 app.py
     ```
 
 6. **Accéder à l'application**
