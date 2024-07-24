@@ -15,8 +15,8 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 1. **Cloner le dépôt**
     ```bash
-    git clone https://votre-repo-url.git
-    cd votre-repo-dossier
+    git clone https://github.com/notRiyad/flask-portfolio-tracker.git
+    cd flask-portfolio-tracker
     ```
 
 
