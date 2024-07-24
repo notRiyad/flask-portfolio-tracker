@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">Portfolio Tracker</div>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Positions du Fond</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Instrument ID</th>
+                    <th>Poids</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for position in positions %}
+                <tr>
+                    <td>{{ position.id }}</td>
+                    <td>{{ position.instrument_id }}</td>
+                    <td>{{ position.poids }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2 class="mt-4">Total des Poids: {{ total_poids }}</h2>
+        <h2>Poids = 100%: {{ 'Oui' if total_poids == 100 else 'Non' }}</h2>
+    </div>
+    <div class="footer">© 2024 Portfolio Tracker</div>
+</body>
+</html>

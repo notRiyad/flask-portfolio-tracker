@@ -1,0 +1,41 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 8px 8px 0 0;
+}
+
+.footer {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.table {
+    margin-top: 20px;
+}
