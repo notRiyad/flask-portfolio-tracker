@@ -71,7 +71,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 8. **Lancer l'application**
     ```bash
-    python3 app.py
+    flask --app app run
     ```
 
 9. **Accéder à l'application**
