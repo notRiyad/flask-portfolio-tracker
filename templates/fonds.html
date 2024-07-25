@@ -1,35 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fonds</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="header">Portfolio Tracker</div>
-    <div class="container">
-        <h1 class="mt-4 mb-4">Liste des fonds</h1>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for fond in fonds %}
-                <tr>
-                    <td>{{ fond.id }}</td>
-                    <td>{{ fond.name }}</td>
-                    <td>{{ fond.description }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <div class="footer">© 2024 Portfolio Tracker</div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>Fonds</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fond in fonds %}
+            <tr>
+                <td>{{ fond.id }}</td>
+                <td>{{ fond.name }}</td>
+                <td>{{ fond.description }}</td>
+                <td>
+                    <a href="/positions/{{ fond.id }}" class="btn btn-primary btn-sm">View Positions</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

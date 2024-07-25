@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Positions</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="header">Portfolio Tracker</div>
-    <div class="container">
-        <h1 class="mt-4 mb-4">Positions du Fond</h1>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Instrument ID</th>
-                    <th>Poids</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for position in positions %}
-                <tr>
-                    <td>{{ position.id }}</td>
-                    <td>{{ position.instrument_id }}</td>
-                    <td>{{ position.poids }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2 class="mt-4">Total des Poids: {{ total_poids }}</h2>
-        <h2>Poids = 100%: {{ 'Oui' if total_poids == 100 else 'Non' }}</h2>
+{% extends "base.html" %}
+{% block content %}
+<h1>Positions</h1>
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">Total Weight: {{ total_poids }}</h5>
+        {% if total_poids == 100 %}
+        <div class="alert alert-success" role="alert">
+            <span class="emoji">&#x1F44D;</span> Le poids total est exactement 100. Validé!
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+            <span class="emoji">&#x26A0;</span> Le poids total est {{ total_poids }}. Non validé!
+        </div>
+        {% endif %}
     </div>
-    <div class="footer">© 2024 Portfolio Tracker</div>
-</body>
-</html>
+</div>
+<div class="row">
+    {% for position in positions %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ position.instrument.name }}</h5>
+                <p class="card-text">Weight: {{ position.poids }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

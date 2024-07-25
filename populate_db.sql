@@ -1,49 +1,73 @@
+CREATE DATABASE IF NOT EXISTS portefeuille_db;
+USE portefeuille_db;
+
+CREATE TABLE IF NOT EXISTS referentielfonds (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS referentielinstruments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(50),
+    fond_id INT,
+    FOREIGN KEY (fond_id) REFERENCES referentielfonds(id)
+);
+
+CREATE TABLE IF NOT EXISTS positions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    instrument_id INT,
+    fond_id INT,
+    poids DECIMAL(5, 2),
+    FOREIGN KEY (instrument_id) REFERENCES referentielinstruments(id),
+    FOREIGN KEY (fond_id) REFERENCES referentielfonds(id)
+);
+
 INSERT INTO referentielfonds (name, description) VALUES
-('Fonds Alpha', 'Description du Fonds Alpha'),
-('Fonds Beta', 'Description du Fonds Beta'),
-('Fonds Gamma', 'Description du Fonds Gamma'),
-('Fonds Delta', 'Description du Fonds Delta');
+('Fonds Alpha', 'Un fonds équilibré avec un portefeuille diversifié.'),
+('Fonds Beta', 'Fonds de croissance avec une orientation technologique.'),
+('Fonds Gamma', 'Fonds axé sur les énergies renouvelables.'),
+('Fonds Delta', 'Fonds conservateur avec une faible volatilité.');
 
 INSERT INTO referentielinstruments (name, type, fond_id) VALUES
-('Instrument A', 'Type 1', 1),
-('Instrument B', 'Type 1', 1),
-('Instrument C', 'Type 2', 1),
-('Instrument D', 'Type 2', 2),
-('Instrument E', 'Type 3', 2),
-('Instrument F', 'Type 3', 2),
-('Instrument G', 'Type 4', 3),
-('Instrument H', 'Type 4', 3),
-('Instrument I', 'Type 1', 4),
-('Instrument J', 'Type 2', 4),
-('Instrument K', 'Type 3', 1),
-('Instrument L', 'Type 4', 1),
-('Instrument M', 'Type 1', 2),
-('Instrument N', 'Type 2', 2),
-('Instrument O', 'Type 3', 3),
-('Instrument P', 'Type 4', 3),
-('Instrument Q', 'Type 1', 4),
-('Instrument R', 'Type 2', 4),
-('Instrument S', 'Type 3', 1),
-('Instrument T', 'Type 4', 4);
+('Apple Inc.', 'Action', 1),
+('Microsoft Corp.', 'Action', 1),
+('Alphabet Inc.', 'Action', 1),
+('Tesla Inc.', 'Action', 2),
+('Amazon.com Inc.', 'Action', 2),
+('NVIDIA Corp.', 'Action', 2),
+('NextEra Energy', 'Action', 3),
+('First Solar', 'Action', 3),
+('Vestas Wind Systems', 'Action', 3),
+('Coca-Cola Co.', 'Action', 4),
+('Procter & Gamble Co.', 'Action', 4),
+('Johnson & Johnson', 'Action', 4),
+('Meta Platforms Inc.', 'Action', 1),
+('Adobe Inc.', 'Action', 2),
+('Salesforce Inc.', 'Action', 2),
+('Brookfield Renewable Partners', 'Action', 3),
+('SunPower Corp.', 'Action', 3),
+('Brookfield Infrastructure Partners', 'Action', 4),
+('PepsiCo Inc.', 'Action', 4),
+('Unilever PLC', 'Action', 4);
 
 INSERT INTO positions (instrument_id, fond_id, poids) VALUES
 (1, 1, 25.00),
 (2, 1, 25.00),
 (3, 1, 50.00),
-(4, 2, 50.00),
-(5, 2, 25.00),
-(6, 2, 25.00),
+(4, 2, 40.00),
+(5, 2, 30.00),
+(6, 2, 30.00),
 (7, 3, 50.00),
-(8, 3, 50.00),
-(9, 4, 30.00),
-(10, 4, 20.00),
-(11, 1, 20.00),
-(12, 1, 10.00),
-(13, 2, 15.00),
-(14, 2, 20.00),
-(15, 3, 40.00),
-(16, 3, 60.00),
-(17, 4, 25.00),
-(18, 4, 25.00),
-(19, 1, 30.00),
-(20, 4, 50.00);
+(8, 3, 30.00),
+(9, 3, 20.00),
+(10, 4, 30.00),
+(11, 4, 20.00),
+(12, 4, 50.00),
+(15, 2, 15.00),
+(16, 2, 15.00),
+(17, 3, 20.00),
+(18, 3, 40.00),
+(19, 4, 25.00),
+(20, 4, 25.00);
