@@ -11,6 +11,8 @@ app = Flask(__name__)
 #Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:%40AmiralGestion%232024@localhost/portefeuille_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+#Connexion à la DB
 db = SQLAlchemy(app)
 
 
