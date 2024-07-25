@@ -2,7 +2,7 @@
 import pymysql
 pymysql.install_as_MySQLdb()
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 #App
@@ -14,7 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #Connexion à la DB
 db = SQLAlchemy(app)
-
 
 #Définition des modèles
 class Fonds(db.Model):
@@ -61,6 +60,23 @@ def show_positions(fond_id):
     positions = Position.query.filter_by(fond_id=fond_id).all()
     total_poids = sum(position.poids for position in positions)
     return render_template('positions.html', positions=positions, total_poids=total_poids)
+
+@app.route('/charts')
+def charts():
+    return render_template('charts.html')
+
+@app.route('/chart-data')
+def chart_data():
+    fonds = Fonds.query.all()
+    data = {
+        "labels": [fond.name for fond in fonds],
+        "datasets": [{
+            "label": "Poids des Fonds",
+            "data": [sum(position.poids for position in Position.query.filter_by(fond_id=fond.id).all()) for fond in fonds],
+            "backgroundColor": ["#007bff", "#28a745", "#dc3545", "#ffc107"],
+        }]
+    }
+    return jsonify(data)
 
 if __name__ == '__main__':
     #Debug Mode (On/Off)
